@@ -31,5 +31,9 @@
 *.out
 *.app
 *.pdb
+*.log
 /.vs
-/Pix/.vs/X
+/Pix/.vs
+/Pix/X
+/Pix/x64
+/Pix/Pix/x64
