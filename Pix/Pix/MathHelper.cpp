@@ -1,6 +1,11 @@
 #include "MathHelper.h"
 #include <cmath>
 
+bool MathHelper::IsEqual(float a, float b)
+{
+	return abs(a - b) < 0.001f;
+}
+
 float MathHelper::MagnitudeSquared(const Vector2& v)
 {
 	return v.x * v.x + v.y * v.y;
