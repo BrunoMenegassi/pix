@@ -6,3 +6,10 @@ Vertex(1, 1, 0.5, 1, 1)
 Vertex(19, 19, 1, 0, 1)
 
 EndDraw()
+
+BeginDraw(line)
+
+Vertex(19, 1, 0, 0, 1)
+Vertex(1, 19, 0, 0.5, 0)
+
+EndDraw()
