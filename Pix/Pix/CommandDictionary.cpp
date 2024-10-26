@@ -4,6 +4,8 @@
 #include "CmdSetResolution.h"
 #include "CmdVarFloat.h"
 #include "CmdSetColor.h"
+#include "CmdSetViewport.h"
+#include "CmdSetClipping.h"
 
 #include "CmdBeginDraw.h"
 #include "CmdVertex.h"
@@ -21,6 +23,7 @@ CommandDictionary::CommandDictionary()
 
 	// Setting commands
 	RegisterCommand<CmdSetResolution>();
+	RegisterCommand<CmdSetViewport>();
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();
@@ -33,6 +36,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdBeginDraw>();
 	RegisterCommand<CmdVertex>();
 	RegisterCommand<CmdEndDraw>();
+	RegisterCommand<CmdSetClipping>();
 }
 
 TextEditor::LanguageDefinition CommandDictionary::GenerateLanguageDefinition()
