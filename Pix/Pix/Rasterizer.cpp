@@ -34,7 +34,7 @@ Rasterizer* Rasterizer::Get()
 
 void Rasterizer::SetFillMode(FillMode fillMode)
 {
-
+	mFillMode = fillMode;
 }
 
 void Rasterizer::SetColor(X::Color color)
@@ -89,7 +89,7 @@ void Rasterizer::DrawLine(const Vertex& a, const Vertex& b)
 
 void Rasterizer::DrawTriangle(const Vertex& a, const Vertex& b, const Vertex& c)
 {
-	switch (mfillMode)
+	switch (mFillMode)
 	{
 	case FillMode::Solid:
 	{

@@ -47,7 +47,7 @@ void PrimitivesManager::EndDraw()
 	{
 		for (size_t i = 1; i < mVertexBuffer.size(); i += 2)
 		{
-			if (Clipper::Get()->ClipLine(mVertexBuffer[i - 1], mVertexBuffer[i]))
+			if (!Clipper::Get()->ClipLine(mVertexBuffer[i - 1], mVertexBuffer[i]))
 			{
 				Rasterizer::Get()->DrawLine(mVertexBuffer[i - 1], mVertexBuffer[i]);
 			}
