@@ -1,6 +1,14 @@
-﻿  CmdDrawPixel.cpp
+﻿  Clipper.cpp
+  CmdBeginDraw.cpp
+  CmdDrawPixel.cpp
+  CmdEndDraw.cpp
+  CmdSetClipping.cpp
   CmdSetColor.cpp
+  CmdVertex.cpp
+  Graphics.cpp
+  MathHelper.cpp
   PrimitivesManager.cpp
   Rasterizer.cpp
   Generating Code...
+C:\Users\LCV2342617\Documents\GitHub\pix\Pix\Pix\Clipper.cpp(55): warning C4715: 'IsInFront': not all control paths return a value
   Pix.vcxproj -> C:\Users\LCV2342617\Documents\GitHub\pix\Pix\x64\Debug\Pix.exe

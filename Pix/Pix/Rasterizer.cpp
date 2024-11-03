@@ -29,6 +29,10 @@ void DrawLineHigh(const Vertex& bottom, const Vertex& top)
 Rasterizer* Rasterizer::Get()
 {
 	static Rasterizer sInstance;
+	Matrix4 matT = Matrix4::Translation(1.0f, 10.0f, 5.0f);
+	Matrix4 final = matT;
+	Matrix4 finalInv = MathHelper::Inverse(final);
+	Matrix4 identity = final * finalInv;
 	return &sInstance;
 }
 
