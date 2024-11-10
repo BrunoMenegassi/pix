@@ -1,12 +1,17 @@
-﻿  Clipper.cpp
+﻿  Camera.cpp
+  Clipper.cpp
   CmdBeginDraw.cpp
+  CmdCamera.cpp
+C:\Users\LCV2342617\Documents\GitHub\pix\Pix\Pix\CmdCamera.cpp(72,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   CmdDrawPixel.cpp
   CmdEndDraw.cpp
+  CmdMatrix.cpp
   CmdSetClipping.cpp
   CmdSetColor.cpp
   CmdVertex.cpp
   Graphics.cpp
   MathHelper.cpp
+  MatrixStack.cpp
   PrimitivesManager.cpp
   Rasterizer.cpp
   Generating Code...

@@ -6,6 +6,8 @@
 #include "CmdSetColor.h"
 #include "CmdSetViewport.h"
 #include "CmdSetClipping.h"
+#include "CmdMatrix.h"
+#include "CmdCamera.h"
 
 #include "CmdBeginDraw.h"
 #include "CmdVertex.h"
@@ -37,6 +39,21 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdVertex>();
 	RegisterCommand<CmdEndDraw>();
 	RegisterCommand<CmdSetClipping>();
+
+	//Matrix commands
+	RegisterCommand<CmdPushTranslation>();
+	RegisterCommand<CmdPushRotationX>();
+	RegisterCommand<CmdPushRotationY>();
+	RegisterCommand<CmdPushRotationZ>();
+	RegisterCommand<CmdPushScaling>();
+	RegisterCommand<CmdPopMatrix>();
+
+	//Camera commands
+	RegisterCommand<CmdSetCameraPosition>();
+	RegisterCommand<CmdSetCameraDirection>();
+	RegisterCommand<CmdSetCameraNear>();
+	RegisterCommand<CmdSetCameraFar>();
+	RegisterCommand<CmdSetCameraFov>();
 }
 
 TextEditor::LanguageDefinition CommandDictionary::GenerateLanguageDefinition()
