@@ -1,19 +1,6 @@
-﻿  Camera.cpp
-  Clipper.cpp
-  CmdBeginDraw.cpp
-  CmdCamera.cpp
-C:\Users\LCV2342617\Documents\GitHub\pix\Pix\Pix\CmdCamera.cpp(72,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  CmdDrawPixel.cpp
-  CmdEndDraw.cpp
-  CmdMatrix.cpp
-  CmdSetClipping.cpp
-  CmdSetColor.cpp
-  CmdVertex.cpp
-  Graphics.cpp
-  MathHelper.cpp
-  MatrixStack.cpp
-  PrimitivesManager.cpp
-  Rasterizer.cpp
+﻿  CmdVarBool.cpp
+  VariableCache.cpp
+C:\Users\LCV2342617\Documents\GitHub\pix\Pix\Pix\VariableCache.cpp(32,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating Code...
-C:\Users\LCV2342617\Documents\GitHub\pix\Pix\Pix\Clipper.cpp(55): warning C4715: 'IsInFront': not all control paths return a value
+     Creating library C:\Users\LCV2342617\Documents\GitHub\pix\Pix\x64\Debug\Pix.lib and object C:\Users\LCV2342617\Documents\GitHub\pix\Pix\x64\Debug\Pix.exp
   Pix.vcxproj -> C:\Users\LCV2342617\Documents\GitHub\pix\Pix\x64\Debug\Pix.exe

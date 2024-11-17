@@ -2,6 +2,8 @@
 
 #include "Command.h"
 
+using namespace std;
+
 class CmdSetResolution : public Command
 {
 public:
@@ -20,5 +22,5 @@ public:
 			"- Optional: Show grid (true or false) if pixel size is > 1.\n";
 	}
 
-	bool Execute(const std::vector<std::string>& params) override;
+	bool Execute(const vector<string>& params) override;
 };
