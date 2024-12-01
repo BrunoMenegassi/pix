@@ -54,7 +54,7 @@ bool IsInFront(ClipEdge edge, const Vector3& pos)
 	}
 }
 
-Vertex ComputeIntersection(ClipEdge edge, const Vertex& v0, const Vertex& v1)
+Vertex ComputeIntersection(ClipEdge edge, const Vertex& v0, const Vertex& v1, bool lerpNorm)
 {
 	Viewport* vp = Viewport::Get();
 
@@ -69,7 +69,7 @@ Vertex ComputeIntersection(ClipEdge edge, const Vertex& v0, const Vertex& v1)
 		break;
 	}
 
-	return LerpVertex(v0, v1, t);
+	return LerpVertex(v0, v1, t, lerpNorm);
 }
 
 Clipper* Clipper::Get()
@@ -169,7 +169,7 @@ bool Clipper::ClipLine(Vertex& a, Vertex& b)
 	return cutLine;
 }
 
-bool Clipper::ClipTriangle(vector<Vertex>& vertices)
+bool Clipper::ClipTriangle(vector<Vertex>& vertices, bool lerpNorm)
 {
 	if (!mIsClipping)
 	{
@@ -203,12 +203,12 @@ bool Clipper::ClipTriangle(vector<Vertex>& vertices)
 			else if (p0IsInFront && !p1IsInFront)
 			{
 				//intersection
-				newVertices.push_back(ComputeIntersection(edge, vP0, vP1));
+				newVertices.push_back(ComputeIntersection(edge, vP0, vP1, lerpNorm));
 			}
 			// is p0 behind and p1 in front
 			else if (!p0IsInFront && p1IsInFront)
 			{
-				newVertices.push_back(ComputeIntersection(edge, vP0, vP1));
+				newVertices.push_back(ComputeIntersection(edge, vP0, vP1, lerpNorm));
 				newVertices.push_back(vP1);
 			}
 		}

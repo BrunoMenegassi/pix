@@ -81,5 +81,5 @@ bool CmdPushScaling::Execute(const vector<string>& params)
 bool CmdPopMatrix::Execute(const vector<string>& params)
 {
 	MatrixStack::Get()->PopMatrix();
-	return false;
+	return true;
 }

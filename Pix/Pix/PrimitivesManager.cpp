@@ -124,22 +124,48 @@ void PrimitivesManager::EndDraw()
 		Matrix4 matScreen = GetScreenTransform();
 		Matrix4 matToNDC = matView * matProj;
 
+		ShadeMode shadeMode = Rasterizer::Get()->GetShadeMode();
+
 		for (size_t i = 2; i < mVertexBuffer.size(); i += 3)
 		{
 			vector<Vertex> triangle = { mVertexBuffer[i - 2], mVertexBuffer[i - 1], mVertexBuffer[i] };
 			if (mApplyTransform)
 			{
+				// MOVE TO WORLD SPACE =====================================================
 				// Move all positions into World space
 				for (size_t i = 0; i < triangle.size(); i++)
 				{
 					triangle[i].pos = MathHelper::TransformCoord(triangle[i].pos, matWorld);
+					triangle[i].posWorld = triangle[i].pos;
 				}
-				Vector3 faceNormal = CreateFacingNormal(triangle[0].pos, triangle[1].pos, triangle[2].pos);
-				for (size_t i = 0; i < triangle.size(); i++)
+				// If we don't have a normal (eg: not a model), then create facing normal
+				if (MathHelper::IsEqual(triangle[0].norm, {0.0f, 0.0f, 0.0f}))
 				{
-					triangle[i].color *= lm->ComputeLightColor(triangle[i].pos, faceNormal);
+					Vector3 faceNormal = CreateFacingNormal(triangle[0].pos, triangle[1].pos, triangle[2].pos);
+					for (size_t i = 0; i < triangle.size(); i++)
+					{
+						triangle[i].norm = faceNormal;
+					}
+				}
+				// otherwise move the local space normal into world space
+				else 
+				{
+					for (size_t i = 0; i < triangle.size(); i++)
+					{
+						triangle[i].norm = MathHelper::TransformNormal(triangle[i].norm, matWorld);
+					}
 				}
 
+				// if flat or gouraud, we want vertex lightning, otherwise do not do lightning here
+				if (shadeMode != ShadeMode::Phong)
+				{
+					for (size_t i = 0; i < triangle.size(); i++)
+					{
+						triangle[i].color *= lm->ComputeLightColor(triangle[i].pos, triangle[i].norm);
+					}
+				}
+
+				// MOVE TO NDC SPACE =====================================================
 				// Move all positions into NDC space
 				for (size_t i = 0; i < triangle.size(); i++)
 				{
@@ -151,6 +177,7 @@ void PrimitivesManager::EndDraw()
 					continue;
 				}
 				
+				// MOVE TO SCREEN SPACE =====================================================
 				// Move all positions into Screen Space
 				for (size_t i = 0; i < triangle.size(); i++)
 				{
@@ -158,7 +185,7 @@ void PrimitivesManager::EndDraw()
 					MathHelper::FlattenVectorScreenCoords(triangle[i].pos);
 				}
 			}
-			if (!Clipper::Get()->ClipTriangle(triangle))
+			if (!Clipper::Get()->ClipTriangle(triangle, shadeMode == ShadeMode::Phong))
 			{
 				for (size_t t =2; t < triangle.size(); t++)
 				{

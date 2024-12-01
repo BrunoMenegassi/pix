@@ -9,12 +9,21 @@ enum class FillMode
 	WireFrame
 };
 
+enum class ShadeMode
+{
+	Flat,		// light per face
+	Gouraud,	// light per vertex
+	Phong		// light per pixel
+};
+
 class Rasterizer
 {
 public:
 	static Rasterizer* Get();
 
 	void SetFillMode(FillMode fillMode);
+	void SetShadeMode(ShadeMode shadeMode);
+	ShadeMode GetShadeMode() const;
 
 	void SetColor(X::Color color);
 	void DrawPoint(int x, int y);
@@ -28,4 +37,5 @@ private:
 
 	X::Color mColor = X::Colors::White;
 	FillMode mFillMode = FillMode::Solid;
+	ShadeMode mShadeMode = ShadeMode::Gouraud;
 };

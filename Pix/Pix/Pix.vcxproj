@@ -147,6 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\..\Downloads\ModelsAndShading\3d_shading.pix" />
+    <None Include="..\..\..\..\..\Downloads\ModelsAndShading\3d_spot_light.pix" />
     <None Include="imgui.ini" />
     <None Include="Scripts\3d_cubes.pix" />
     <None Include="Scripts\3d_directional_light.pix" />
@@ -181,10 +183,12 @@
     <ClCompile Include="CmdLights.cpp" />
     <ClCompile Include="CmdMaterial.cpp" />
     <ClCompile Include="CmdMatrix.cpp" />
+    <ClCompile Include="CmdModel.cpp" />
     <ClCompile Include="CmdSetClipping.cpp" />
     <ClCompile Include="CmdSetColor.cpp" />
     <ClCompile Include="CmdSetCullMode.cpp" />
     <ClCompile Include="CmdSetResolution.cpp" />
+    <ClCompile Include="CmdSetShadeMode.cpp" />
     <ClCompile Include="CmdSetViewport.cpp" />
     <ClCompile Include="CmdVarBool.cpp" />
     <ClCompile Include="CmdVarFloat.cpp" />
@@ -198,6 +202,8 @@
     <ClCompile Include="MaterialManager.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="MatrixStack.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelCache.cpp" />
     <ClCompile Include="PixEditor.cpp" />
     <ClCompile Include="PrimitivesManager.cpp" />
     <ClCompile Include="Rasterizer.cpp" />
@@ -223,10 +229,12 @@
     <ClInclude Include="CmdLights.h" />
     <ClInclude Include="CmdMaterial.h" />
     <ClInclude Include="CmdMatrix.h" />
+    <ClInclude Include="CmdModel.h" />
     <ClInclude Include="CmdSetClipping.h" />
     <ClInclude Include="CmdSetColor.h" />
     <ClInclude Include="CmdSetCullMode.h" />
     <ClInclude Include="CmdSetResolution.h" />
+    <ClInclude Include="CmdSetShadeMode.h" />
     <ClInclude Include="CmdSetViewport.h" />
     <ClInclude Include="CmdVarBool.h" />
     <ClInclude Include="CmdVarFloat.h" />
@@ -243,6 +251,8 @@
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="MatrixStack.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelCache.h" />
     <ClInclude Include="PixEditor.h" />
     <ClInclude Include="PrimitivesManager.h" />
     <ClInclude Include="Rasterizer.h" />

@@ -12,9 +12,11 @@
 #include "CmdEnableDepth.h"
 #include "CmdVarInt.h"
 #include "CmdVarBool.h"
+#include "CmdModel.h"
 
 #include "CmdLights.h"
 #include "CmdMaterial.h"
+#include "CmdSetShadeMode.h"
 
 #include "CmdBeginDraw.h"
 #include "CmdVertex.h"
@@ -43,6 +45,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdDrawPixel>();
 	RegisterCommand<CmdSetColor>();
 	RegisterCommand<CmdEnableDepth>();
+	RegisterCommand<CmdSetShadeMode>();
 
 	// Primitive commands
 	RegisterCommand<CmdBeginDraw>();
@@ -50,6 +53,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdEndDraw>();
 	RegisterCommand<CmdSetClipping>();
 	RegisterCommand<CmdSetCullMode>();
+	RegisterCommand<CmdModel>();
 
 	//Matrix commands
 	RegisterCommand<CmdPushTranslation>();
