@@ -99,7 +99,7 @@ namespace
 
 		VertexPC* mVertices3D;
 		VertexPC* mVertices2D;
-		VertexPC* mPixels;
+		VertexPC* mPixel;
 
 		uint32_t mMaxVertices;
 		uint32_t mNumVertices3D;
@@ -125,7 +125,7 @@ namespace
 		, mPixelBuffer(nullptr)
 		, mVertices3D(nullptr)
 		, mVertices2D(nullptr)
-		, mPixels(nullptr)
+		, mPixel(nullptr)
 		, mMaxVertices(0)
 		, mNumVertices2D(0)
 		, mNumVertices3D(0)
@@ -181,7 +181,7 @@ namespace
 		bd.ByteWidth = pixelCount * sizeof(VertexPC);
 		device->CreateBuffer(&bd, nullptr, &mPixelBuffer);
 
-		mPixels = new VertexPC[pixelCount];
+		mPixel = new VertexPC[pixelCount];
 		mMaxPixels = pixelCount;
 		mNumPixels = 0;
 
@@ -194,7 +194,7 @@ namespace
 		XASSERT(mInitialized, "[SimpleDraw] Not initialized.");
 
 		// Release everything
-		SafeDeleteArray(mPixels);
+		SafeDeleteArray(mPixel);
 		SafeDeleteArray(mVertices2D);
 		SafeDeleteArray(mVertices3D);
 
@@ -417,7 +417,7 @@ namespace
 			const int posY = y * mPixelSize;
 			for (uint32_t yy = 0; yy < mPixelSize; ++yy)
 				for (uint32_t xx = 0; xx < mPixelSize; ++xx)
-					mPixels[mNumPixels++] = { Math::Vector3(static_cast<float>(posX + xx), static_cast<float>(posY + yy), 0.0f), color };
+					mPixel[mNumPixels++] = { Math::Vector3(static_cast<float>(posX + xx), static_cast<float>(posY + yy), 0.0f), color };
 		}
 	}
 
@@ -632,7 +632,7 @@ namespace
 			{
 				D3D11_MAPPED_SUBRESOURCE resource;
 				context->Map(mPixelBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &resource);
-				memcpy(resource.pData, mPixels, mNumPixels * stride);
+				memcpy(resource.pData, mPixel, mNumPixels * stride);
 				context->Unmap(mPixelBuffer, 0);
 
 				context->IASetVertexBuffers(0, 1, &mPixelBuffer, &stride, &offset);

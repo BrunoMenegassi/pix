@@ -22,6 +22,10 @@
 #include "CmdVertex.h"
 #include "CmdEndDraw.h"
 
+#include "CmdSetTexture.h"
+#include "CmdSetCorrectUV.h"
+#include "CmdSetAddressMode.h"
+
 CommandDictionary* CommandDictionary::Get()
 {
 	static CommandDictionary sInstance;
@@ -54,6 +58,9 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetClipping>();
 	RegisterCommand<CmdSetCullMode>();
 	RegisterCommand<CmdModel>();
+	RegisterCommand<CmdSetTexture>();
+	RegisterCommand<CmdSetCorrectUV>();
+	RegisterCommand<CmdSetAddressMode>();
 
 	//Matrix commands
 	RegisterCommand<CmdPushTranslation>();
