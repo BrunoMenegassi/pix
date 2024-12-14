@@ -25,6 +25,7 @@
 #include "CmdSetTexture.h"
 #include "CmdSetCorrectUV.h"
 #include "CmdSetAddressMode.h"
+#include "CmdSetUseFilter.h"
 
 CommandDictionary* CommandDictionary::Get()
 {
@@ -61,6 +62,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetTexture>();
 	RegisterCommand<CmdSetCorrectUV>();
 	RegisterCommand<CmdSetAddressMode>();
+	RegisterCommand<CmdSetUseFilter>();
 
 	//Matrix commands
 	RegisterCommand<CmdPushTranslation>();

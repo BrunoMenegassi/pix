@@ -10,10 +10,12 @@ public:
 	void Clear();
 	void SetTexture(const string& fileName);
 	void SetAddressMode(AddressMode mode);
+	void SetUseFilter(bool useFilter);
 
 	X::Color SampleColor(const X::Color& uv) const;
 private:
 	vector<unique_ptr<Texture>> mTextures;
 	const Texture* mCurrentTexture = nullptr;
 	AddressMode mAddressMode = AddressMode::Clamp;
+	bool mUseFilter = false;
 };
