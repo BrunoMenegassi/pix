@@ -2,9 +2,11 @@
 #include "DepthBuffer.h"
 #include "LightManager.h"
 #include "TextureCache.h"
+#include "PostProcessing.h"
 
 using namespace std;
 
+// draw a line where abs()
 void DrawLineLow(const Vertex& left, const Vertex& right, ShadeMode shadeMode)
 {
 	int startX = static_cast<int>(left.pos.x);
@@ -66,14 +68,19 @@ void Rasterizer::DrawPoint(int x, int y)
 
 void Rasterizer::DrawPoint(const Vertex& v)
 {
-	if(DepthBuffer::Get()->CheckDepthBuffer(v.pos.x, v.pos.y, v.pos.z))
+	int x = static_cast<int>(v.pos.x);
+	int y = static_cast<int>(v.pos.y);
+	if(DepthBuffer::Get()->CheckDepthBuffer(x, y, v.pos.z))
 	{
 		mColor = TextureCache::Get()->SampleColor(v.color);
 		if (v.color.z >= 0.0f && mShadeMode == ShadeMode::Phong)
 		{
 			mColor *= LightManager::Get()->ComputeLightColor(v.posWorld, v.norm);
 		}
-		DrawPoint(static_cast<int>(v.pos.x), static_cast<int>(v.pos.y));
+		if (!PostProcessing::Get()->DrawToRenderTarget(x, y, mColor))
+		{
+			DrawPoint(x, y);
+		}
 	}
 }
 

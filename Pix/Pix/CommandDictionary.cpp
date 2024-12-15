@@ -27,6 +27,8 @@
 #include "CmdSetAddressMode.h"
 #include "CmdSetUseFilter.h"
 
+#include "CmdPostProcessing.h"
+
 CommandDictionary* CommandDictionary::Get()
 {
 	static CommandDictionary sInstance;
@@ -93,6 +95,11 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetMaterialSpecular>();
 	RegisterCommand<CmdSetMaterialEmissive>();
 	RegisterCommand<CmdSetMaterialShininess>();
+
+	// Postprocessing commands
+	RegisterCommand<CmdPostProcessingBeginDraw>();
+	RegisterCommand<CmdPostProcessingEndDraw>();
+	RegisterCommand<CmdPostProcessingSetEffectType>();
 }
 
 TextEditor::LanguageDefinition CommandDictionary::GenerateLanguageDefinition()

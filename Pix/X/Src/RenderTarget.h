@@ -39,6 +39,7 @@ namespace X
 		void UnbindPS(uint32_t slot);
 
 		void* GetShaderResourceView() const { return mShaderResourceView; }
+		
 		uint32_t GetWidth() const { return mWidth; }
 		uint32_t GetHeight() const { return mHeight; }
 
